@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>洪梓芸个人网站求职版</title>
+  <meta name="description" content="洪梓芸的个人品牌与产品策划作品集：懂游戏的创意策划人，用 AI 提效的内容创作者。游戏内容策划、用户需求洞察、IP 衍生品企划、竞品拆解、AI 协同创作。">
+  <meta property="og:title" content="洪梓芸 · 个人品牌与产品策划作品集">
+  <meta property="og:description" content="懂游戏的创意策划人，用 AI 提效的内容创作者。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/og-cover.png">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    // 在首帧渲染前确定主题，避免闪烁
+    (function () {
+      try {
+        var saved = localStorage.getItem("site-theme");
+        var dark = saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "洪梓芸",
+    "alternateName": "Ziyun Hong",
+    "jobTitle": "游戏创意策划 / 品牌运营",
+    "email": "mailto:elina07@126.com",
+    "description": "网络与新媒体本科毕业，香港城市大学创意媒体硕士在读。懂游戏的创意策划人，用 AI 提效的内容创作者。",
+    "knowsAbout": ["游戏内容策划", "用户需求洞察", "IP 衍生品企划", "竞品拆解", "AI 协同创作"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <!-- 背景装饰：固定且不阻挡点击 -->
+  <div class="bg-decor" aria-hidden="true">
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div class="blob blob-c"></div>
+  </div>
+
+  <header class="site-header" id="top">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="回到顶部">
+        <span class="brand-mark" aria-hidden="true"><span data-icon="sparkle"></span></span>
+        <span class="brand-name">洪梓芸<small>ZIYUN HONG</small></span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="主导航">
+        <a href="#about">关于我</a>
+        <a href="#experience">实习经历</a>
+        <a href="#projects">项目经历</a>
+        <a href="#education">教育背景</a>
+        <a href="#portfolio">作品集</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-label="切换深色模式" title="切换深色模式">
+          <span data-icon="moon"></span>
+        </button>
+        <a class="btn btn-primary nav-cta" href="洪梓芸_游戏策划与品牌运营_简历.pdf" download="洪梓芸_游戏策划与品牌运营_简历.pdf">
+          <span data-icon="download-simple"></span><span>简历 PDF</span>
+        </a>
+        <button class="icon-btn menu-toggle" id="menu-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="site-nav">
+          <span data-icon="list"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="hero-chip">
+            <span data-icon="sparkle"></span>
+            2026 求职中 · 游戏策划 / 品牌运营
+          </p>
+          <h1 id="hero-title">
+            懂游戏的创意策划人<br>
+            <span class="grad-text">用 AI 提效</span>的内容创作者
+          </h1>
+          <p class="hero-sub">
+            网络与新媒体本科毕业，香港城市大学创意媒体硕士在读。
+            用用户洞察驱动创意，从 0 到 1 落地 IP 衍生品，
+            也产出过单条点赞 1.4w+ 的爆款内容。
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="洪梓芸_游戏策划与品牌运营_简历.pdf" download="洪梓芸_游戏策划与品牌运营_简历.pdf">
+              <span data-icon="download-simple"></span><span>下载简历</span>
+            </a>
+            <a class="btn btn-ghost btn-lg" href="#projects">
+              <span data-icon="arrow-down"></span><span>看看我的项目</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <figure class="photo-card">
+            <div class="photo-frame">
+              <img src="images/hzy.jpg" alt="洪梓芸的职业照" width="600" height="400">
+            </div>
+            <figcaption>洪梓芸 · 香港城市大学创意媒体硕士在读</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 能力标签 marquee -->
+    <div class="marquee" aria-label="能力标签">
+      <div class="marquee-track">
+        <div class="marquee-group">
+          <span>游戏内容策划</span><i data-icon="sparkle"></i>
+          <span>用户需求洞察</span><i data-icon="sparkle"></i>
+          <span>IP 衍生品企划</span><i data-icon="sparkle"></i>
+          <span>竞品拆解</span><i data-icon="sparkle"></i>
+          <span>AI 协同创作</span><i data-icon="sparkle"></i>
+          <span>抖音 / 小红书爆款</span><i data-icon="sparkle"></i>
+          <span>品牌全案</span><i data-icon="sparkle"></i>
+          <span>AIGC 工作流</span><i data-icon="sparkle"></i>
+        </div>
+        <div class="marquee-group" aria-hidden="true">
+          <span>游戏内容策划</span><i data-icon="sparkle"></i>
+          <span>用户需求洞察</span><i data-icon="sparkle"></i>
+          <span>IP 衍生品企划</span><i data-icon="sparkle"></i>
+          <span>竞品拆解</span><i data-icon="sparkle"></i>
+          <span>AI 协同创作</span><i data-icon="sparkle"></i>
+          <span>抖音 / 小红书爆款</span><i data-icon="sparkle"></i>
+          <span>品牌全案</span><i data-icon="sparkle"></i>
+          <span>AIGC 工作流</span><i data-icon="sparkle"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- 关于我 -->
+    <section id="about" class="section about">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>关于我</h2>
+          <p>用创意连接玩家与产品，用真实数据验证每一个选择。</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-intro reveal">
+            <p>
+              网络与新媒体本科毕业生，香港城市大学创意媒体硕士在读。
+              拥有游戏营销实战经验，曾独立产出单条点赞 1.4w+ 的爆款视频。
+              擅于通过用户调研挖掘痛点，兼具从 0 到 1 落地 IP 衍生品的完整项目经验。
+              目前正积极探索 AI 编程工具（如 Codex）与 AIGC 辅助创意工作流，
+              实现"设计 + 技术"双重视角落地创意。
+            </p>
+          </div>
+          <dl class="fact-grid reveal">
+            <div class="fact">
+              <dt><span data-icon="graduation-cap"></span>硕士在读</dt>
+              <dd>香港城市大学 · 创意媒体</dd>
+            </div>
+            <div class="fact">
+              <dt><span data-icon="book-open"></span>本科院校</dt>
+              <dd>广州南方学院 · 网络与新媒体</dd>
+            </div>
+            <div class="fact">
+              <dt><span data-icon="chat-circle-text"></span>语言能力</dt>
+              <dd>雅思 6.5 · CET-4</dd>
+            </div>
+            <div class="fact">
+              <dt><span data-icon="magic-wand"></span>关注方向</dt>
+              <dd>AIGC · AI 编程工作流</dd>
+            </div>
+            <div class="fact">
+              <dt><span data-icon="phone"></span>电话</dt>
+              <dd>13715556571</dd>
+            </div>
+            <div class="fact">
+              <dt><span data-icon="envelope-simple"></span>邮箱</dt>
+              <dd>elina07@126.com</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- 实习经历 -->
+    <section id="experience" class="section experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>实习经历</h2>
+          <p>三段实战，从内容生产到品牌落地，都留有真实的数字。</p>
+        </div>
+        <ol class="timeline">
+          <li class="timeline-item reveal">
+            <div class="tl-marker" aria-hidden="true"></div>
+            <article class="exp-card featured">
+              <header class="exp-head">
+                <div>
+                  <h3>广州可燃冰文化传播有限公司</h3>
+                  <p class="exp-role">游戏创意策划实习生</p>
+                </div>
+                <time datetime="2026-03">2026.03 - 2026.08</time>
+              </header>
+              <div class="exp-stats">
+                <div class="stat">
+                  <span data-icon="heart-straight"></span>
+                  <b>1.4w+</b>
+                  <small>单条爆款点赞</small>
+                </div>
+                <div class="stat">
+                  <span data-icon="note-pencil"></span>
+                  <b>8-10 条</b>
+                  <small>周更内容</small>
+                </div>
+                <div class="stat">
+                  <span data-icon="trend-up"></span>
+                  <b>15%</b>
+                  <small>转化率提升</small>
+                </div>
+              </div>
+              <ul class="exp-points">
+                <li><b>爆款内容生产：</b>负责抖音和小红书游戏内容策划，周更 8-10 条，独立产出爆款视频（单条点赞 1.4w+，互动率超 8%）。</li>
+                <li><b>快速响应能力：</b>面对新游上线，48 小时内完成竞品拆解与内容方案输出，带动转化率提升 15%。</li>
+              </ul>
+            </article>
+          </li>
+
+          <li class="timeline-item reveal">
+            <div class="tl-marker" aria-hidden="true"></div>
+            <article class="exp-card">
+              <header class="exp-head">
+                <div>
+                  <h3>中山市润和建材有限公司（三和集团）</h3>
+                  <p class="exp-role">营销部实习生</p>
+                </div>
+                <time datetime="2025-11">2025.11 - 2026.02</time>
+              </header>
+              <ul class="exp-points">
+                <li><b>信息降噪：</b>优化产品宣传册视觉排版，提升信息传递效率。</li>
+                <li><b>需求闭环：</b>跟进客户订单全流程，同步需求与进度，沉淀沟通经验支撑营销转化。</li>
+              </ul>
+            </article>
+          </li>
+
+          <li class="timeline-item reveal">
+            <div class="tl-marker" aria-hidden="true"></div>
+            <article class="exp-card">
+              <header class="exp-head">
+                <div>
+                  <h3>中山市西区街道彩虹社区</h3>
+                  <p class="exp-role">新媒体运营</p>
+                </div>
+                <time datetime="2024-06">2024.06 - 2024.08</time>
+              </header>
+              <ul class="exp-points">
+                <li><b>用户分析：</b>根据社区居民阅读习惯调整内容风格，独立运营公众号，产出 12 篇推文及配套海报，平均阅读量提升 30%。</li>
+              </ul>
+            </article>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 项目经历 -->
+    <section id="projects" class="section projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>项目经历</h2>
+          <p>从 AI 编程到品牌全案，完整经历"洞察、定义、落地、验证"。</p>
+        </div>
+
+        <article class="project-featured reveal">
+          <div class="project-cover cover-a" role="img" aria-label="项目 A 作品图占位，请替换">
+            <span class="cover-art" data-icon="code"></span>
+            <span class="cover-hint"><span data-icon="camera"></span>替换作品图</span>
+          </div>
+          <div class="project-body">
+            <p class="project-tags">
+              <span class="tag">#AI编程</span><span class="tag">#产品思维</span><span class="tag">#响应式设计</span><span class="tag">#0-1搭建</span>
+            </p>
+            <h3>Vibe coding · 个人简历网页开发</h3>
+            <p class="project-note star-badge">⭐ AI 产品能力最佳体现</p>
+            <p class="project-meta">2026.08 · 3 天从 0 到 1</p>
+            <button class="accordion-btn" type="button" aria-expanded="false" aria-controls="pa-details">
+              <span>查看背景、行动与结果</span>
+              <span data-icon="caret-down"></span>
+            </button>
+            <div class="accordion" id="pa-details">
+              <dl class="sar">
+                <div>
+                  <dt>背景</dt>
+                  <dd>传统 PDF 简历传播性差、更新维护成本高，且无法直观展示作品集。</dd>
+                </div>
+                <div>
+                  <dt>行动</dt>
+                  <dd>明确"履历展示 + 作品集入口 + 一键下载"三大核心功能；用 AI 编程工具 Codex 以自然语言描述需求，3 天内从 0 到 1 搭建响应式个人履历网页；实现移动端适配与 PDF 一键下载。</dd>
+                </div>
+                <div>
+                  <dt>结果</dt>
+                  <dd>网站已上线，作为个人作品集统一入口；沉淀"自然语言驱动开发"方法论，验证了 AI 协同编程的可行性。</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </article>
+
+        <div class="project-grid">
+          <article class="project-card reveal">
+            <div class="project-cover cover-b">
+              <img src="images/four seasons.jpg" alt="“四时记”品牌视觉形象设计作品图">
+            </div>
+            <div class="project-body">
+              <p class="project-tags">
+                <span class="tag">#品牌全案</span><span class="tag">#竞品分析</span><span class="tag">#IP形象设计</span><span class="tag">#Sai2/AI</span>
+              </p>
+              <h3>"四时记"品牌视觉形象设计</h3>
+              <p class="project-meta">2025.11 - 2026.04 · 品牌 VI 全案</p>
+              <button class="accordion-btn" type="button" aria-expanded="false" aria-controls="pb-details">
+                <span>查看背景、行动与结果</span>
+                <span data-icon="caret-down"></span>
+              </button>
+              <div class="accordion" id="pb-details">
+                <dl class="sar">
+                  <div>
+                    <dt>背景</dt>
+                    <dd>为某文化类新消费品牌打造完整的视觉识别系统（VI）与 IP 形象。</dd>
+                  </div>
+                  <div>
+                    <dt>行动</dt>
+                    <dd>独立设计并发放问卷，结合竞品矩阵拆解，精准定位目标用户审美偏好与品牌调性；使用 Sai2 绘制品牌 IP 主形象，用 Adobe Illustrator 制作 IP 衍生产品效果图。</dd>
+                  </div>
+                  <div>
+                    <dt>结果</dt>
+                    <dd>产出一套完整的品牌 VI 手册，设计稿被项目方采纳为核心视觉素材。</dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-cover cover-c">
+              <img src="images/IP.jpg" alt="同人企划 IP 衍生产品设计作品图">
+            </div>
+            <div class="project-body">
+              <p class="project-tags">
+                <span class="tag">#IP策划</span><span class="tag">#用户调研</span><span class="tag">#0-1落地</span><span class="tag">#线下销售</span>
+              </p>
+              <h3>同人企划 · IP 衍生产品设计</h3>
+              <p class="project-meta">2024.02 - 2024.04 · 周边产品线</p>
+              <button class="accordion-btn" type="button" aria-expanded="false" aria-controls="pc-details">
+                <span>查看背景、行动与结果</span>
+                <span data-icon="caret-down"></span>
+              </button>
+              <div class="accordion" id="pc-details">
+                <dl class="sar">
+                  <div>
+                    <dt>背景</dt>
+                    <dd>针对二次元游戏玩家群体，从零搭建一条周边产品线并完成线下销售闭环。</dd>
+                  </div>
+                  <div>
+                    <dt>行动</dt>
+                    <dd>通过问卷与社群访谈收集二次元用户画像，筛选高潜力 IP；基于用户偏好策划并完成 5 款周边从设计到生产的全流程；统筹广交会（漫展）摊位申请、现场陈列与销售。</dd>
+                  </div>
+                  <div>
+                    <dt>结果</dt>
+                    <dd>项目实现盈利，验证了"调研驱动选品"模式的有效性。</dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 教育背景 -->
+    <section id="education" class="section education">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>教育背景</h2>
+          <p>创意与技术交汇的学术路径。</p>
+        </div>
+        <div class="edu-grid reveal">
+          <article class="edu-card">
+            <span class="edu-icon" data-icon="graduation-cap"></span>
+            <div>
+              <h3>香港城市大学</h3>
+              <p>创意媒体硕士（在读）</p>
+            </div>
+          </article>
+          <article class="edu-card">
+            <span class="edu-icon" data-icon="book-open"></span>
+            <div>
+              <h3>广州南方学院</h3>
+              <p>网络与新媒体专业 · 本科</p>
+            </div>
+          </article>
+          <article class="edu-card">
+            <span class="edu-icon" data-icon="chat-circle-text"></span>
+            <div>
+              <h3>语言能力</h3>
+              <p>雅思 6.5（听说读写流利）· CET-4</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 作品集 -->
+    <section id="portfolio" class="section portfolio">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>作品集</h2>
+          <p>视觉仓库：品牌 VI、IP 周边与内容运营的切片。</p>
+        </div>
+        <div class="masonry reveal">
+          <figure class="pf-item">
+            <a class="pf-cover cover-pf-web" href="#projects" aria-label="查看个人简历网页项目">
+              <span class="cover-art" data-icon="code"></span>
+              <span class="cover-hint"><span data-icon="camera"></span>替换作品图</span>
+            </a>
+            <figcaption>
+              <h3>个人简历网页</h3>
+              <p>响应式个人履历 · AI 协同开发</p>
+            </figcaption>
+          </figure>
+          <figure class="pf-item">
+            <a class="pf-cover cover-pf-brand" href="#projects" aria-label="查看四时记品牌 VI 项目">
+              <img src="images/four seasons.jpg" alt="“四时记”品牌 VI 作品图">
+            </a>
+            <figcaption>
+              <h3>"四时记"品牌 VI</h3>
+              <p>品牌全案 · IP 形象设计</p>
+            </figcaption>
+          </figure>
+          <figure class="pf-item">
+            <a class="pf-cover cover-pf-merch" href="#projects" aria-label="查看 IP 衍生周边项目">
+              <img src="images/IP.jpg" alt="IP 衍生周边作品图">
+            </a>
+            <figcaption>
+              <h3>IP 衍生周边</h3>
+              <p>周边产品线 · 线下销售闭环</p>
+            </figcaption>
+          </figure>
+          <figure class="pf-item">
+            <a class="pf-cover cover-pf-video" href="#projects" aria-label="查看抖音爆款视频作品">
+              <img src="images/dy.png" alt="抖音爆款视频作品图">
+            </a>
+            <figcaption>
+              <h3>抖音爆款视频</h3>
+              <p>单条点赞 1.4w+ · 互动率 8%</p>
+            </figcaption>
+          </figure>
+          <figure class="pf-item">
+            <a class="pf-cover cover-pf-account" href="#projects" aria-label="查看公众号推文作品">
+              <span class="cover-art" data-icon="note-pencil"></span>
+              <span class="cover-hint"><span data-icon="camera"></span>替换作品图</span>
+            </a>
+            <figcaption>
+              <h3>公众号推文排版</h3>
+              <p>12 篇推文 · 阅读量 +30%</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 结尾 CTA -->
+    <section class="section cta">
+      <div class="container">
+        <div class="cta-panel reveal">
+          <h2>如果你也在找一位懂游戏、会内容的创意策划人</h2>
+          <p>欢迎发邮件给我，附上这份简历，我们就可以开始对话。</p>
+          <div class="cta-actions">
+            <a class="btn btn-light btn-lg" href="mailto:elina07@126.com">
+              <span data-icon="envelope-simple"></span><span>发邮件给我</span>
+            </a>
+            <a class="btn btn-light-ghost btn-lg" href="洪梓芸_游戏策划与品牌运营_简历.pdf" download="洪梓芸_游戏策划与品牌运营_简历.pdf">
+              <span data-icon="download-simple"></span><span>下载简历</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-name">洪梓芸<small>ZIYUN HONG</small></span>
+        <p>游戏创意策划 / 品牌运营 / AIGC 探索者</p>
+      </div>
+      <ul class="social-links">
+        <li><a href="#" aria-label="Instagram"><span data-icon="instagram-logo"></span><span>Instagram</span></a></li>
+        <li><a href="#" aria-label="抖音"><span data-icon="tiktok-logo"></span><span>抖音</span></a></li>
+        <li><a href="#" aria-label="小红书"><span class="social-text">小红书</span></a></li>
+        <li><a href="#" aria-label="哔哩哔哩"><span class="social-text">哔哩哔哩</span></a></li>
+        <li><a href="#" aria-label="微信"><span data-icon="wechat-logo"></span><span>微信</span></a></li>
+        <li><a href="mailto:elina07@126.com" aria-label="邮箱"><span data-icon="envelope-simple"></span><span>邮箱</span></a></li>
+      </ul>
+      <p class="footer-note">© 2026 洪梓芸 · Made with Codex</p>
+    </div>
+  </footer>
+
+  <!-- 一键下载 / 一键复制邮箱 -->
+  <div class="floating-actions">
+    <a class="fab fab-download" href="洪梓芸_游戏策划与品牌运营_简历.pdf" download="洪梓芸_游戏策划与品牌运营_简历.pdf" aria-label="下载完整简历 PDF">
+      <span data-icon="file-pdf"></span><span>下载完整简历（PDF）</span>
+    </a>
+    <button class="fab fab-copy" id="copy-email" type="button" aria-label="一键复制邮箱 elina07@126.com">
+      <span data-icon="envelope-simple"></span><span id="copy-email-label">一键复制邮箱 elina07@126.com</span>
+    </button>
+  </div>
+
+  <!-- 图片大图预览（lightbox） -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="图片大图预览" aria-hidden="true">
+    <button class="lightbox-btn lightbox-close" type="button" aria-label="关闭大图">
+      <span data-icon="x"></span>
+    </button>
+    <button class="lightbox-btn lightbox-prev" type="button" aria-label="上一张">
+      <span data-icon="arrow-left"></span>
+    </button>
+    <figure class="lightbox-figure">
+      <img class="lightbox-img" src="" alt="">
+      <figcaption class="lightbox-caption"></figcaption>
+    </figure>
+    <button class="lightbox-btn lightbox-next" type="button" aria-label="下一张">
+      <span data-icon="arrow-right"></span>
+    </button>
+  </div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
