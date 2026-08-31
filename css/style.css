@@ -1167,13 +1167,6 @@ ol {
     linear-gradient(135deg, #b9d7fa 0%, #e3f2fd 48%, #cfe7fb 118%);
 }
 
-.cover-pf-print {
-  aspect-ratio: 1 / 1;
-  background:
-    radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.7), transparent 36%),
-    linear-gradient(135deg, #c8e6f9 0%, #e3f2fd 52%, #cde9fa 118%);
-}
-
 .pf-cover::before,
 .pf-cover::after {
   content: "";
