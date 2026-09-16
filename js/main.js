@@ -3,8 +3,13 @@
   "use strict";
 
   var EMAIL = "elina07@126.com";
+  var WECHAT_ID = "Elina-Kilo";
   var doc = document;
   var root = doc.documentElement;
+
+  function langIsEn() {
+    return window.I18N && window.I18N.getLang() === "en";
+  }
 
   function ready(fn) {
     if (doc.readyState === "loading") {
@@ -36,7 +41,7 @@
     if (!nav || !btn) return;
     nav.classList.remove("open");
     btn.setAttribute("aria-expanded", "false");
-    btn.setAttribute("aria-label", "打开菜单");
+    btn.setAttribute("aria-label", langIsEn() ? "Open menu" : "打开菜单");
     var icon = btn.querySelector("[data-icon]");
     if (icon) icon.setAttribute("data-icon", "list");
   }
@@ -47,7 +52,7 @@
     if (!nav || !btn) return;
     nav.classList.add("open");
     btn.setAttribute("aria-expanded", "true");
-    btn.setAttribute("aria-label", "关闭菜单");
+    btn.setAttribute("aria-label", langIsEn() ? "Close menu" : "关闭菜单");
     var icon = btn.querySelector("[data-icon]");
     if (icon) icon.setAttribute("data-icon", "x");
   }
@@ -171,11 +176,11 @@
       btn.setAttribute("data-copied", "true");
       var icon = btn.querySelector("[data-icon]");
       if (icon) icon.setAttribute("data-icon", "check");
-      if (label) label.textContent = "已复制邮箱 " + EMAIL;
+      if (label) label.textContent = (langIsEn() ? "Email copied " : "已复制邮箱 ") + EMAIL;
       window.setTimeout(function () {
         btn.setAttribute("data-copied", "false");
         if (icon) icon.setAttribute("data-icon", "envelope-simple");
-        if (label) label.textContent = "一键复制邮箱 " + EMAIL;
+        if (label) label.textContent = (langIsEn() ? "Copy email " : "一键复制邮箱 ") + EMAIL;
       }, 2200);
     }
 
@@ -194,6 +199,49 @@
     } else {
       copied = fallback();
       if (copied) success();
+    }
+  }
+
+  /* ---------- 复制微信号 ---------- */
+  function copyWechat(event) {
+    if (event) event.preventDefault();
+    var btn = doc.getElementById("copy-wechat");
+    var label = doc.getElementById("copy-wechat-label");
+    if (!btn) return;
+
+    function fallback() {
+      var area = doc.createElement("textarea");
+      area.value = WECHAT_ID;
+      area.setAttribute("readonly", "");
+      area.style.position = "fixed";
+      area.style.opacity = "0";
+      doc.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = doc.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      doc.body.removeChild(area);
+      return ok;
+    }
+
+    function success() {
+      btn.setAttribute("aria-label", langIsEn() ? "WeChat ID copied " + WECHAT_ID : "已复制微信号 " + WECHAT_ID);
+      if (label) label.textContent = (langIsEn() ? "Copied: " : "已复制：") + WECHAT_ID;
+      window.setTimeout(function () {
+        btn.setAttribute("aria-label", langIsEn() ? "Copy WeChat ID " + WECHAT_ID : "复制微信号 " + WECHAT_ID);
+        if (label) label.textContent = langIsEn() ? "WeChat" : "微信";
+      }, 2200);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(WECHAT_ID).then(success).catch(function () {
+        if (fallback()) success();
+      });
+    } else if (fallback()) {
+      success();
     }
   }
 
@@ -282,6 +330,46 @@
   }
 
   ready(function () {
+    /* 语言切换 */
+    var langToggle = doc.getElementById("lang-toggle");
+    var langLabel = doc.getElementById("lang-toggle-label");
+
+    function syncLangButton() {
+      if (!langToggle) return;
+      var en = langIsEn();
+      if (langLabel) langLabel.textContent = en ? "中文" : "EN";
+      langToggle.setAttribute("aria-label", en ? "Switch to Chinese" : "切换为英文");
+      var nav = doc.getElementById("site-nav");
+      var menuBtn = doc.getElementById("menu-toggle");
+      if (menuBtn) {
+        menuBtn.setAttribute(
+          "aria-label",
+          nav && nav.classList.contains("open")
+            ? en ? "Close menu" : "关闭菜单"
+            : en ? "Open menu" : "打开菜单"
+        );
+      }
+    }
+
+    if (langToggle && window.I18N) {
+      syncLangButton();
+      langToggle.addEventListener("click", function () {
+        var next = langIsEn() ? "zh-CN" : "en";
+        root.setAttribute("lang", next);
+        try {
+          localStorage.setItem("site-lang", next === "en" ? "en" : "zh");
+        } catch (e) {
+          /* 隐私模式静默失败 */
+        }
+        window.I18N.apply();
+        syncLangButton();
+        doc.querySelectorAll(".accordion-btn[aria-expanded='true']").forEach(function (btn) {
+          var target = doc.getElementById(btn.getAttribute("aria-controls"));
+          if (target) target.style.maxHeight = target.scrollHeight + "px";
+        });
+      });
+    }
+
     /* 主题 */
     var themeToggle = doc.getElementById("theme-toggle");
     if (themeToggle) {
@@ -320,6 +408,10 @@
     var copyBtn = doc.getElementById("copy-email");
     if (copyBtn) {
       copyBtn.addEventListener("click", copyEmail);
+    }
+    var wechatBtn = doc.getElementById("copy-wechat");
+    if (wechatBtn) {
+      wechatBtn.addEventListener("click", copyWechat);
     }
 
     initHeaderState();

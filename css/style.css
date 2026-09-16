@@ -56,6 +56,9 @@
   --shadow-float: 0 8px 20px rgba(180, 210, 230, 0.2);
   --radius: 16px;
   --header-h: 76px;
+  /* 背景图设置：改这里调整透明度（0-1）与位置 */
+  --bg-image-opacity: 0.7;
+  --bg-image-position: center center;
 }
 
 [data-theme="dark"] {
@@ -76,6 +79,7 @@
   --tag-text: #a8d1f7;
   --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.35);
   --shadow-float: 0 8px 20px rgba(0, 0, 0, 0.35);
+  --bg-image-opacity: 0.3;
 }
 
 /* ---------- 基础 ---------- */
@@ -100,7 +104,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: var(--bg-mid);
+  background: transparent;
   color: var(--text-main);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
@@ -169,15 +173,34 @@ ol {
   padding: 88px 0;
 }
 
-/* 洞洞板背景：固定一层，渐变 + 圆点纹理 */
+/* 背景图：用 <img> 保证本地 file:// 打开也能加载；透明度/位置用 --bg-image-* 变量调整 */
+.page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--bg-image-position);
+  opacity: var(--bg-image-opacity);
+  pointer-events: none;
+}
+
+/* 背景色调层：压在照片上，保证文字可读 */
 .bg-decor {
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background-image: radial-gradient(var(--peg-dot) 1.5px, transparent 1.5px),
-    linear-gradient(135deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-bottom) 100%);
-  background-size: 24px 24px, auto;
+  background: transparent;
+}
+
+.bg-decor::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--bg-top) 0%, var(--bg-mid) 52%, var(--bg-bottom) 100%);
+  opacity: 0.3;
 }
 
 .blob {
@@ -284,6 +307,28 @@ ol {
 }
 
 .icon-btn:hover {
+  background: var(--soft);
+  transform: translateY(-1px);
+}
+
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  height: 40px;
+  padding: 0 13px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--border-blue);
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.lang-toggle:hover {
   background: var(--soft);
   transform: translateY(-1px);
 }
@@ -876,29 +921,6 @@ ol {
     linear-gradient(135deg, #d5e9fc 0%, #e8f4fe 48%, #c3e2fa 100%);
 }
 
-.project-cover::before,
-.project-cover::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  border: 2px solid rgba(74, 144, 226, 0.22);
-  pointer-events: none;
-}
-
-.project-cover::before {
-  width: 56%;
-  aspect-ratio: 1;
-  left: -12%;
-  top: -16%;
-}
-
-.project-cover::after {
-  width: 34%;
-  aspect-ratio: 1;
-  right: -6%;
-  bottom: -12%;
-}
-
 .cover-art {
   position: relative;
   z-index: 1;
@@ -1125,7 +1147,13 @@ ol {
   justify-content: center;
   overflow: hidden;
   border-radius: 12px;
+  box-shadow: 0 12px 26px -12px rgba(74, 144, 226, 0.38);
+  transition: box-shadow 0.3s ease;
   isolation: isolate;
+}
+
+.pf-cover:hover {
+  box-shadow: 0 18px 36px -14px rgba(74, 144, 226, 0.5);
 }
 
 .pf-cover .cover-art {
@@ -1165,29 +1193,6 @@ ol {
   background:
     radial-gradient(circle at 84% 20%, rgba(255, 255, 255, 0.65), transparent 34%),
     linear-gradient(135deg, #b9d7fa 0%, #e3f2fd 48%, #cfe7fb 118%);
-}
-
-.pf-cover::before,
-.pf-cover::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  border: 2px solid rgba(74, 144, 226, 0.22);
-  pointer-events: none;
-}
-
-.pf-cover::before {
-  width: 52%;
-  aspect-ratio: 1;
-  left: -14%;
-  top: -18%;
-}
-
-.pf-cover::after {
-  width: 32%;
-  aspect-ratio: 1;
-  right: -8%;
-  bottom: -14%;
 }
 
 .pf-cover .cover-art {
@@ -1511,6 +1516,35 @@ body.no-scroll {
   transform: translateY(-50%) scale(1.06);
 }
 
+/* ---------- 英文排版微调 ---------- */
+html[lang="en"] .site-nav {
+  gap: 18px;
+}
+
+html[lang="en"] .hero h1 {
+  font-size: clamp(1.9rem, 3.8vw, 2.85rem);
+}
+
+html[lang="en"] .hero-sub {
+  max-width: 54ch;
+}
+
+html[lang="en"] .section-head h2 {
+  letter-spacing: -0.01em;
+}
+
+html[lang="en"] .exp-head h3 {
+  font-size: 1.05rem;
+}
+
+html[lang="en"] .project-body h3 {
+  font-size: 1.2rem;
+}
+
+html[lang="en"] .cta-panel h2 {
+  max-width: 30ch;
+}
+
 /* ---------- 滚动显现 ---------- */
 .reveal {
   opacity: 0;
@@ -1612,6 +1646,11 @@ body.no-scroll {
 @media (max-width: 640px) {
   .section {
     padding: 64px 0;
+  }
+
+  html[lang="en"] .hero h1 {
+    font-size: clamp(1.5rem, 6.3vw, 2rem);
+    line-height: 1.25;
   }
 
   .container {
